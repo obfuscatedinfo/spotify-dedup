@@ -14,6 +14,23 @@ You can check it out on [https://spotify-dedup.com](https://spotify-dedup.com) o
 
 ## Install and run
 
+### Spotify API Setup
+
+To install and run this locally, you require a Spotify API `client_id` and `redirect_uri` used in your environment.
+
+**Instructions:**
+1. Navigate to https://developer.spotify.com/
+2. Create an app
+3. Enter the `redirect_uri` you will be using
+4. Copy your `client_id`
+
+### Local environment
+
+Create .env file containing:
+
+    NEXT_PUBLIC_SPOTIFY_CLIENT_ID='your_client_id'
+    NEXT_PUBLIC_REDIRECT_URI='your_redirect_uri'
+
 Install the dependencies:
 
     pnpm install
@@ -21,6 +38,24 @@ Install the dependencies:
 Run it:
 
     pnpm dev
+
+Then open http://localhost:3000 in a browser
+
+### Docker
+
+This can run via docker by using the GHCR package.
+
+Pull docker image:
+
+    docker pull ghcr.io/obfuscatedinfo/obfuscatedinfo/spotify-dedup:latest
+
+Run docker image:
+
+    docker run \
+      -p 3000:3000 \
+      -e 'NEXT_PUBLIC_SPOTIFY_CLIENT_ID'='your_client_id' \
+      -e 'NEXT_PUBLIC_REDIRECT_URI'='your_redirect_uri' \
+      'ghcr.io/obfuscatedinfo/obfuscatedinfo/spotify-dedup:latest'
 
 Then open http://localhost:3000 in a browser
 
